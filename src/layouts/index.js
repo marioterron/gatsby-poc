@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 
 import Header from '../components/header';
-import './index.css';
+import './index.scss';
 
 const Layout = ({ children, data }) => (
 	<div>
@@ -37,7 +37,14 @@ Layout.propTypes = {
 };
 
 Layout.defaultProps = {
-	children: () => {}
+	children: () => {},
+	data: {
+		site: {
+			siteMetadata: {
+				title: 'Gatsby Default Starter'
+			}
+		}
+	}
 };
 
 export default Layout;
