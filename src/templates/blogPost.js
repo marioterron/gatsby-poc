@@ -3,6 +3,8 @@ import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 
+import './blogPost.scss';
+
 export default function BlogPost({ data }) {
 	const {
 		title, publishDate, body, heroImage
@@ -11,8 +13,8 @@ export default function BlogPost({ data }) {
 	return (
 		<div style={{ background: '#fff' }}>
 			<Helmet title={`${title} | ${siteMetadata.title}`} />
-			<div>
-				<Img alt={title} sizes={heroImage.sizes} />
+			<div className="hero">
+				<Img className="hero-image" alt={title} sizes={heroImage.sizes} />
 			</div>
 			<div className="wrapper">
 				<h1 className="section-headline">{title}</h1>

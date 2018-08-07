@@ -241,9 +241,12 @@ html {
 }
 
 body {
-	color: rgba(0, 0, 0, 0.8);
+	color: #373f49;
+	background: #eee;
 	font-family: 'Spectral', georgia, serif;
+	font-size: 1em;
 	font-weight: normal;
+	line-height: 1.65;
 	word-wrap: break-word;
 	font-kerning: normal;
 	-moz-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
