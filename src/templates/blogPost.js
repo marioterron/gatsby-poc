@@ -1,11 +1,29 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 
 export default function BlogPost({ data }) {
-	const { title } = data.contentfulBlogPost;
+	console.log(data);
+	const { title, publishDate, body } = data.contentfulBlogPost;
+	const { siteMetadata } = data.site;
 	return (
-		<div>
-			<h1>{title}</h1>
+		<div style={{ background: '#fff' }}>
+			<Helmet title={`${title} | ${siteMetadata.title}`} />
+			<div className="wrapper">
+				<h1 className="section-headline">{title}</h1>
+				<p
+					style={{
+						display: 'block'
+					}}
+				>
+					{publishDate}
+				</p>
+				<div
+					dangerouslySetInnerHTML={{
+						__html: body.childMarkdownRemark.html
+					}}
+				/>
+			</div>
 		</div>
 	);
 }
@@ -30,6 +48,17 @@ export const query = graphql`
 	query blogPostQuery($slug: String!) {
 		contentfulBlogPost(slug: { eq: $slug }) {
 			title
+			publishDate(formatString: "MMMM Do, YYYY")
+			body {
+				childMarkdownRemark {
+					html
+				}
+			}
+		}
+		site {
+			siteMetadata {
+				title
+			}
 		}
 	}
 `;
